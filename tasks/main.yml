@@ -1,0 +1,51 @@
+---
+
+- name: Set the hostname parts
+  when: inviqa_server_hostname_parts is not defined
+  set_fact:
+    inviqa_server_hostname_parts:
+      - "{{ inviqa_server_name_client | mandatory }}"
+      - "{{ inviqa_server_name_tier | default('') }}"
+      - "{{ inviqa_server_name_environment | mandatory }}"
+      - "{{ inviqa_server_name_role }}{{ inviqa_server_name_role_increment | default('01') }}"
+
+- name: Set the host parts
+  when: inviqa_server_host_parts is not defined
+  set_fact:
+    inviqa_server_host_parts:
+      - "{{ inviqa_server_host_os | mandatory }}"
+      - "{{ inviqa_server_host_hosting_provider | mandatory }}"
+      - "{{ inviqa_server_host_appliance_type }}"
+      - "{{ inviqa_server_host_location | default('') }}"
+      - "{{ inviqa_server_host_country }}"
+
+- name: Concatenate the hostname parts
+  when: inviqa_server_name is not defined
+  set_fact:
+    inviqa_server_name: "{{ inviqa_server_hostname_parts | join(inviqa_server_name_part_delimiter)}}"
+
+- name: Concatenate the host parts
+  when: inviqa_server_host is not defined
+  set_fact:
+    inviqa_server_host: "{{ inviqa_server_host_parts | join(inviqa_server_host_part_delimiter) }}"
+
+- name: Set up the regex_replace filter for the server name
+  when: inviqa_server_name_regex is not defined
+  set_fact:
+    inviqa_server_name_regex: "{{ inviqa_server_name_part_delimiter }}{2,}"
+
+- name: Set up the regex_replace filter for the server host
+  when: inviqa_server_host_regex is not defined
+  set_fact:
+    inviqa_server_host_regex: "{{ inviqa_server_host_part_delimiter }}{2,}"
+
+- name: Set the full hostname
+  when: inviqa_hostname is not defined
+  set_fact:
+    inviqa_hostname:
+      "{{ inviqa_server_name | regex_replace(inviqa_server_name_regex, inviqa_server_name_part_delimiter) }}.{{ inviqa_server_host | regex_replace(inviqa_server_host_regex, inviqa_server_host_part_delimiter) }}"
+
+- name: Debug
+  debug:
+    var: inviqa_hostname
+...

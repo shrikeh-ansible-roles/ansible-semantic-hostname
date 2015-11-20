@@ -1,0 +1,7 @@
+---
+inviqa_server_name_role_increment: '01'
+
+inviqa_server_name_part_delimiter: '-'
+inviqa_server_host_part_delimiter: '-'
+
+...
