@@ -1,6 +1,16 @@
 ---
 - hosts: local
-  gather_facts: false
+  gather_facts: no
+  tasks:
+    - add_host:
+        groups: test
+        name: "{{ lookup('env','TEST_ANSIBLE_HOSTNAME') }}"
+        ansible_connection: "{{ lookup('env','TEST_ANSIBLE_CONNECTION') }}"
+        ansible_ssh_port: "{{ test_host_ssh_port | default('22') }}"
+
+- hosts: test
+  vars:
+    semantic_hostname_debug: yes
   roles:
     - { role: '../../' }
 ...

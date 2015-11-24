@@ -1,0 +1,9 @@
+---
+semantic_hostname_environment: 'prod'
+semantic_hostname_role: 'web'
+semantic_hostname_group: 'acme'
+semantic_hostname_hosting_provider: 'aws' #AWS
+semantic_hostname_appliance: 'vrt' # as opposed to 'lb' or 'srv'
+semantic_hostname_location: 'lon'
+semantic_hostname_country: 'uk'
+...
