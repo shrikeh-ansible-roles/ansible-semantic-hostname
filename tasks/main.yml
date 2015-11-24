@@ -1,7 +1,4 @@
 ---
-- debug:
-    var: ansible_distribution
-
 
 - name: Generate the OS data code
   when: semantic_hostname_os is not defined

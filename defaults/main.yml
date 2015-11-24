@@ -15,7 +15,7 @@ semantic_hostname_name_parts:
   - "{{ semantic_hostname_group | mandatory }}"
   - "{{ semantic_hostname_name_tier | default('') }}"
   - "{{ semantic_hostname_environment | mandatory }}"
-  - "{{ semantic_hostname_role }}{{ semantic_hostname_role_increment | default('01') }}"
+  - "{{ semantic_hostname_role }}{{ semantic_hostname_role_increment }}"
 
 semantic_hostname_name_regex: "{{ semantic_hostname_name_part_delimiter }}{2,}"
 
@@ -35,28 +35,34 @@ semantic_hostname_host_regex: "{{ semantic_hostname_host_part_delimiter }}{2,}"
 semantic_hostname_host: |
   {{ semantic_hostname_host_parts | join(semantic_hostname_host_part_delimiter) | regex_replace(semantic_hostname_host_regex, semantic_hostname_host_part_delimiter) }}
 
-
 semantic_hostname_sections:
   - "{{ semantic_hostname_name }}"
   - "{{ semantic_hostname_host }}"
 
 semantic_hostname_section_delimiter: '.'
 
-semantic_hostname_os_code_ios: 'ios'
-semantic_hostname_os_code_osx: 'osx'
-semantic_hostname_os_code_redhat: 'rhel'
-semantic_hostname_os_code_debian: 'deb'
-semantic_hostname_os_code_ubuntu: 'ubu'
-semantic_hostname_os_code_fedora: 'fed'
-semantic_hostname_os_code_suse: 'suse'
-semantic_hostname_os_code_centos: 'cen'
-semantic_hostname_os_code_windows: 'win'
-semantic_hostname_os_code_solaris: 'sol'
+semantic_hostname_os_code_ios:      'ios'
+semantic_hostname_os_code_osx:      'osx'
+semantic_hostname_os_code_redhat:   'rhel'
+semantic_hostname_os_code_debian:   'deb'
+semantic_hostname_os_code_ubuntu:   'ubu'
+semantic_hostname_os_code_fedora:   'fed'
+semantic_hostname_os_code_suse:     'sus'
+semantic_hostname_os_code_centos:   'cen'
+semantic_hostname_os_code_windows:  'win'
+semantic_hostname_os_code_solaris:  'sol'
 
 semantic_hostname_os_distribution:
   MacOSX: "{{ semantic_hostname_os_code_osx }}"
   CentOS: "{{ semantic_hostname_os_code_centos }}"
-
+  Debian: "{{ semantic_hostname_os_code_debian }}"
+  Ubuntu: "{{ semantic_hostname_os_code_ubuntu }}"
 
 semantic_hostname_os_code: "{{ semantic_hostname_os_distribution[ansible_distribution] }}"
+
+semantic_hostname_appliance_virtual_machine: 'vm'
+semantic_hostname_appliance_cloud_server: 'cs'
+semantic_hostname_appliance_load_balancer: 'lb'
+semantic_hostname_appliance_firewall: 'fw'
+
 ...
