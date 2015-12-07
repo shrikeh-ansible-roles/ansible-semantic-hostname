@@ -1,5 +1,4 @@
 ---
-
 - name: Generate the OS data code
   when: semantic_hostname_os is not defined
   set_fact:
