@@ -67,5 +67,4 @@ semantic_hostname_appliance_load_balancer: 'lb'
 semantic_hostname_appliance_firewall: 'fw'
 semantic_hostname_appliance_smartphone: 'sp'
 semantic_hostname_appliance_hardware: 'hw'
-
 ...
