@@ -9,6 +9,9 @@
         ansible_ssh_port: "{{ test_host_ssh_port | default('22') }}"
 
 - hosts: test
+  tasks:
+    - debug:
+        var: ansible_distribution_version
   vars:
     semantic_hostname_debug: yes
   roles:
