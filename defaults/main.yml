@@ -2,8 +2,8 @@
 semantic_hostname_debug: no
 semantic_hostname_set: no
 
-semantic_hostname_version_regex: '([0-9]+)'
-semantic_hostname_version_regex_capture: '\1'
+semantic_hostname_version_regex: '([^a-z0-9]+)'
+semantic_hostname_version_regex_capture: ''
 
 semantic_hostname_os_version: "{{ ansible_distribution_version | regex_replace(semantic_hostname_version_regex, semantic_hostname_version_regex_capture) }}"
 
