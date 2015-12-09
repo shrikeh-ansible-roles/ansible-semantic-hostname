@@ -27,7 +27,7 @@ semantic_hostname_host_parts:
   - "{{ semantic_hostname_hosting_provider | mandatory }}"
   - "{{ semantic_hostname_appliance }}"
   - "{{ semantic_hostname_location | default('')}}"
-  - "{{ semantic_hostname_country }}"
+  - "{{ semantic_hostname_region }}"
 
 semantic_hostname_host_part_delimiter: '-'
 semantic_hostname_host_regex: "{{ semantic_hostname_host_part_delimiter }}{2,}"
