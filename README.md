@@ -37,4 +37,4 @@ Contact me on Twitter @[barney_hanlon][twitter]
 [twitter]: https://twitter.com/barney_hanlon "Link to my Twitter page"
 [galaxy]: https://galaxy.ansible.com/detail#/role/6439 "This role on Ansible Galaxy"
 [build]: https://travis-ci.org/shrikeh/ansible-semantic-hostname "Build status"
-[stargazers]: https://github.com/shrikeh/ansible-semantic-hostname "Stargazers on GitHub"
+[stargazers]: https://github.com/shrikeh/ansible-semantic-hostname/stargazers "Stargazers on GitHub"
